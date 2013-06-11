@@ -1,0 +1,20 @@
+{
+    "name": "skeleton-scss",
+    "version": "1.0.0",
+    "author": ["Ben Garraud"],
+    "homepage": "https://github.com/bgarraud/Skeleton-scss",
+    "styles": ["_grid.scss"],
+    "main": ["_grid.scss"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bgarraud/Skeleton-scss.git"
+    },
+    "licenses": [{
+        "type": "MIT",
+        "url": "http://opensource.org/licenses/MIT"
+    },
+    {
+        "type": "GPLv2",
+        "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+    }]
+}
