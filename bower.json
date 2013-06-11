@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "author": ["Ben Garraud"],
     "homepage": "https://github.com/bgarraud/Skeleton-scss",
-    "styles": ["_grid.scss"],
-    "main": ["_grid.scss"],
+    "styles": ["styles/_grid.scss"],
+    "main": ["styles/_grid.scss"],
     "repository": {
         "type": "git",
         "url": "https://github.com/bgarraud/Skeleton-scss.git"
