@@ -1,0 +1,188 @@
+@import "compass/css3/box-sizing";
+
+$minWidth : 320px !default;
+$maxWidth : 1920px !default;
+$sideGutter : 10px !default;
+$bottomGutter : 10px !default;
+
+$bigGridCount : 16 !default;
+$oldIEWidth : 960px !default;
+$supportOldIE: false;
+$gridNames: one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen; 
+
+/** ORIGIONALLY BASED ON **/
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+
+/** 
+  *	FLUID GRID SYSTEM for SMALL / MEDIUM / LARGE SCREEN DEVICES
+  * DRAFT CONCEPT
+  * NOTE WOULD REQUIRE AN ADAPTOR FILE FOR <IE8 as it has no suppport for box-sizing: border-box;
+  *	Ben Garraud
+  * 16/05/2013
+  *  
+  **/
+
+
+
+
+/* #SETUP GRID
+================================================== */
+.container { 
+	width: 100%; 	
+	/** OPTIONAL CONSTRAINTS **/
+	max-width: $maxWidth; 
+	min-width: $minWidth; 
+}
+
+.container .col, .container { 
+	padding-left: $sideGutter; 
+	padding-right: $sideGutter;
+}
+.row { 
+	margin-bottom: $bottomGutter;
+}
+
+
+/* #Base Grids
+================================================== */
+
+    .container { 
+    	position: relative; 
+    	margin: 0 auto; 
+    	padding: 0; 
+    }
+    .container .col, .container .cols { 
+    	float: left; 
+    	display: inline; 
+    	@include box-sizing(border-box);
+      padding-left: $sideGutter;
+      padding-right: $sideGutter;
+    }
+    .container .col.row, .container .cols.row { 
+     
+      padding-left: 0;
+      padding-right: 0;
+    }
+    /* Nested col Classes */
+    .col.alpha, .cols.alpha               						{ padding-left: 0; }
+    .col.omega, .cols.omega               						{ padding-right: 0; }
+	
+	.container .col-row {padding:0;}
+
+	/** BASIC GRIDS STATIC GRIDS **/
+	
+	/** THREE COLUMNS **/
+	.container .thirds-1.col                						{ width: 33.33%; }
+	.container .thirds-2.col               							{ width: 66.66%; }
+	
+	/** FOUR COLUMNS **/
+	.container .quarter-1.col                						{ width: 25%; }
+	.container .quarter-2.col                						{ width: 50%; }
+	.container .quarter-3.col                						{ width: 75%; }
+
+
+  /* Base Grid */
+  @for $i from 1 through $bigGridCount {
+    .container .#{nth($gridNames, $i)} { 
+      width: percentage($i/$bigGridCount);
+    }
+    .container .offset-#{nth($gridNames, $i)} { 
+        margin-left: percentage($i/$bigGridCount);
+    }
+  }
+
+       
+
+/* #Mobile (Landscape)
+================================================== */
+
+    /* Note: Design for a width of 480px */
+
+@media only screen and (max-width: 767px) {
+  @for $i from 1 through $bigGridCount {
+    .container .#{nth($gridNames, $i)} { 
+      width: 100%;
+    }
+    .container .offset-#{nth($gridNames, $i)} { 
+        margin-left: 0;
+    }
+  }
+
+}
+
+/* #Old IE Grid (IE<8)
+================================================== */
+@if $supportOldIE {
+.lt-ie8 {
+  @for $i from 1 through $bigGridCount {
+    .container .#{nth($gridNames, $i)} { 
+  
+      width: (($oldIEWidth - ($i*$sideGutter*2))/$bigGridCount)*$i;
+    }
+
+    .container .offset-#{nth($gridNames, $i)} { 
+        margin-left: (($oldIEWidth - ($i*$sideGutter*2))/$bigGridCount)*$i;
+    }
+  }
+
+}
+}
+/* #Content
+================================================== */
+.fillCol {
+	width:100%;
+  display:block;
+}
+.container .centerCol {
+  float:none;
+  margin:auto;
+  display:block;
+}   
+
+/* #Misc
+================================================== */
+.remove-bottom { margin-bottom: 0 !important; }
+.half-bottom { margin-bottom: $bottomGutter*0.5 !important; }
+.add-bottom { margin-bottom: $bottomGutter*0.5 !important; }
+ 
+ /* #Clearing
+================================================== */
+
+    /* Self Clearing Goodness */
+    .container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+    /* Use clearfix class on parent to clear nested columns,
+    or wrap each row of columns in a <div class="row"> */
+    .clearfix:before,
+    .clearfix:after,
+    .row:before,
+    .row:after {
+      content: '\0020';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .row:after,
+    .clearfix:after {
+      clear: both; }
+    .row,
+    .clearfix {
+      zoom: 1; }
+
+    /* You can also use a <br class="clear" /> to clear columns */
+    .clear {
+      clear: both;
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
